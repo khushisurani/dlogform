@@ -24,7 +24,7 @@ function Home() {
 
     const fetchProducts = async () => {
         try {
-            const url = "https://dlogform-z5u2.vercel.app/products";
+            const url = "http://localhost:8080/products";
             const headers = {
                 headers: {
                     'Authorization': localStorage.getItem('token')
