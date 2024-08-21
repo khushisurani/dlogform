@@ -21,7 +21,3 @@ app.use('/products', productRouter)
 app.listen(PORT, () => {
     console.log(`server is running on ${PORT}`);
 })
-
-// khushisurani1204
-// V21JyPtlkLfsc0Av
-// mongodb+srv://khushisurani1204:V21JyPtlkLfsc0Av@cluster0.4kvxa.mongodb.net/
