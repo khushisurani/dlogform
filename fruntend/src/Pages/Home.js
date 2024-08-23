@@ -10,7 +10,7 @@ function Home() {
 
     useEffect(() => {
         setLoggedInUser(localStorage.getItem('loggedInUser'))
-    },[]);
+    }, []);
 
     const handleLogout = (e) => {
         // e.preventDefault()
@@ -27,7 +27,9 @@ function Home() {
             const url = "http://localhost:8080/products";
             const headers = {
                 headers: {
-                    'Authorization': localStorage.getItem('token')
+                    // 'Authorization': localStorage.getItem('token')
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json'
                 }
             }
             const response = await fetch(url, headers);
@@ -47,13 +49,22 @@ function Home() {
             <h1>Welcome {loggedInUser}</h1>
             <button onClick={handleLogout}>Logout</button>
             <div>
-                {
+                {/* {
                     products && products?.map((item, index) => (
                         <ul key={index}>
                             <span>{item.name} : {item.price}</span>
                         </ul>
                     ))
-                }
+                } */}
+                {products && Array.isArray(products) ? (
+                    products.map((item, index) => (
+                        <ul key={index}>
+                            <span>{item.name} : {item.price}</span>
+                        </ul>
+                    ))
+                ) : (
+                    <p>No products available.</p>
+                )}
             </div>
             <ToastContainer />
         </>
